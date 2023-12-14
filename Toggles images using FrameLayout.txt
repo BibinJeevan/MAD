@@ -1,0 +1,65 @@
+activity.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/img1"
+        android:layout_width="410dp"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img1" />
+    <ImageView
+        android:id="@+id/img2"
+        android:layout_width="410dp"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img2" />
+
+</FrameLayout>
+
+
+
+mainactivity.java
+
+
+package com.example.framelayout;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
+import static android.view.View.*;
+
+public class MainActivity extends AppCompatActivity {
+    ImageView i1,i2;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        i1=findViewById(R.id.img1);
+        i2=findViewById(R.id.img2);
+        i2.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                i2.setVisibility(GONE);
+                i1.setVisibility(VISIBLE);
+            }
+        });
+        i1.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                i1.setVisibility(GONE);
+                i2.setVisibility(VISIBLE);
+            }
+        });
+    }
+}
